@@ -26,7 +26,7 @@
 # A few utility functions to make it easy and re-usable to draw segmented prompts
 
 CURRENT_BG='NONE'
-SEGMENT_SEPARATOR='⮀'
+SEGMENT_SEPARATOR='\ue0b0'
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
@@ -103,7 +103,7 @@ prompt_git() {
 #HEAD
     
 #
-    echo -n "${ref/refs\/heads\//⭠ }${vcs_info_msg_0_}"
+    echo -n "${ref/refs\/heads\//\ue0a0 }${vcs_info_msg_0_}"
 # my settings
   fi
 }
@@ -124,7 +124,7 @@ prompt_hg() {
 				# if working copy is clean
 				prompt_segment green black
 			fi
-			echo -n $(hg prompt "⭠ {rev}@{branch}") $st
+			echo -n $(hg prompt "\ue0a0 {rev}@{branch}") $st
 		else
 			st=""
 			rev=$(hg id -n 2>/dev/null | sed 's/[^-0-9]//g')
@@ -138,7 +138,7 @@ prompt_hg() {
 			else
 				prompt_segment green black
 			fi
-			echo -n "⭠ $rev@$branch" $st
+			echo -n "\ue0a0 $rev@$branch" $st
 		fi
 	fi
 }
